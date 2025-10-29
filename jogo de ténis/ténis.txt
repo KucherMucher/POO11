@@ -1,0 +1,14 @@
+A ordem é Pontos-Jogos-Sets
+
+Quando um jogador ganha nos pontos, ganha o jogo
+a ordem dos pontos é (0-15-30-40-(Adv./Deuce)-Jogo)
+
+quando um jogador ganha nos jogos, ganha um set
+ganha um set quando chegar ao 6
+ou
+(se for, no mínimo, 6-5)
+ganha um set quando o jogador tem pelomenos 2 jogos vencidos a mais do adversário
+
+quando um jogador ganha nos sets, ganha
+no Best of 5, tem que ganhar 3 sets
+no Best of 3, tem que ganhar 2 setsasdsa
