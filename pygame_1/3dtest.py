@@ -19,10 +19,7 @@ p6 = [300, 600]
 p7 = [600, 300]
 p8 = [600, 600]
 
-line1 = [p1, p2, red]
-line2 = [p5, p6, green]
-line3 = [p7, p8, yellow]
-line4 = [p3, p4, blue]
+
 
 border = (0, 900)
 
@@ -88,30 +85,27 @@ def submerge(p1, p2, p3, p4, p5, p6, p7, p8):
 #sadsad
 """
 
-def change_pos_x(line1, line2, line3, line4):
+def change_pos_x(p1,p2,p3,p4,p5,p6,p7,p8):
     global direction
 
     if direction=="left":
-        line1ph = line1[0]
-        line2ph = line2[0]
-        line3ph = line3[0]
-        line4ph = line4[0]
+        p1ph=p1
+        p2ph=p2
+        p3ph=p3
+        p4ph=p4
+        p5ph=p5
+        p6ph=p6
+        p7ph=p7
+        p8ph=p8
 
-        line1[0] = line2ph[0]
-        line2[0] = line3ph[0]
-        line3[0] = line4ph[0]
-        line4[0] = line1ph[0]
-
-        line1ph[1] = line1[1]
-        line2ph[1] = line2[1]
-        line3ph[1] = line3[1]
-        line4ph[1] = line4[1]
-
-        line1 = line2ph[1]
-        line2 = line3ph[1]
-        line3 = line4ph[1]
-        line4 = line1ph[1]
-
+        p1=p5ph
+        p2=p6ph
+        p3=p1ph
+        p4=p2ph
+        p5=p7ph
+        p6=p8ph
+        p7=p3ph
+        p8=p4ph
         print(direction)
 
     elif direction=="right":
@@ -126,19 +120,23 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    line1 = [p1, p2, red]
+    line2 = [p5, p6, green]
+    line3 = [p7, p8, yellow]
+    line4 = [p3, p4, blue]
 
-    pygame.draw.line(screen, line1[2], line1[0], line1[1], 2)
+    pygame.draw.line(screen, red, line1[0], line1[1], 2)
     #pygame.draw.line(screen, red, p1, p3, 2)
     #pygame.draw.line(screen, red, p2, p4, 2)
-    pygame.draw.line(screen, line4[2], line4[0], line4[1], 2)
+    pygame.draw.line(screen, blue, line4[0], line4[1], 2)
 
     #pygame.draw.line(screen, red, p1, p4, 2)
     #pygame.draw.line(screen, red, p2, p3, 2)
 
-    pygame.draw.line(screen, line2[2], line2[0], line2[1], 2)
+    pygame.draw.line(screen, green, line2[0], line2[1], 2)
     #pygame.draw.line(screen, red, p5, p7, 2)
     #pygame.draw.line(screen, red, p6, p8, 2)
-    pygame.draw.line(screen, line3[2], line3[0], line3[1], 2)
+    pygame.draw.line(screen, yellow, line3[0], line3[1], 2)
 
 
     #pygame.draw.line(screen, red, p1, p5, 2)
@@ -146,10 +144,11 @@ while running:
     #pygame.draw.line(screen, red, p3, p7, 2)
     #pygame.draw.line(screen, red, p4, p8, 2)
 
+    change_pos_x(p1,p2,p3,p4,p5,p6,p7,p8)
     pygame.display.update()
     fps.tick(8)
 
-    change_pos_x(line1, line2, line3, line4)
+    
 
     #rotate_x(p1, p2, p3, p4, p5, p6, p7, p8)
     screen.fill((0,0,0))
