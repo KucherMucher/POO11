@@ -39,6 +39,7 @@ while running:
             screen = pygame.display.set_mode((400, 400))
 
     pygame.display.update()
+    #asdas
 
     screen.fill((75, 75, 75))
 
