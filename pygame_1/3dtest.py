@@ -5,6 +5,9 @@ pygame.init()
 screen = pygame.display.set_mode((900, 900))
 
 red = (255, 0, 0)
+blue = (0, 0, 255)
+green = (0, 255, 0)
+yellow = (255, 255, 0)
 
 p1 = [200, 200]
 p2 = [200, 700]
@@ -16,12 +19,19 @@ p6 = [300, 600]
 p7 = [600, 300]
 p8 = [600, 600]
 
+line1 = [p1, p2]
+line2 = [p5, p6]
+line3 = [p7, p8]
+line4 = [p3, p4]
+
 border = (0, 900)
 
-direction = "left"
+direction = "left" #/"right"
+density = "outside" #/"inside"
 
 fps= pygame.time.Clock()
 
+#x
 def rotate(p1, p2, p3, p4, p5, p6, p7, p8):
     global direction
      #True - left, false - right
@@ -30,20 +40,17 @@ def rotate(p1, p2, p3, p4, p5, p6, p7, p8):
         if p3[0]==0:
             direction="right"
         else:
-            goLeft(p1, p2, p3, p4, p5, p6, p7, p8)
+            goLeft_x(p1, p2, p3, p4, p5, p6, p7, p8)
             print(direction)
 
     elif direction=="right":
         if p1[0]==900:
             direction="left"
         else:
-            goRight(p1, p2, p3, p4, p5, p6, p7, p8)
+            goRight_x(p1, p2, p3, p4, p5, p6, p7, p8)
             print(direction)
 
-    
-
-
-def goLeft(p1, p2, p3, p4, p5, p6, p7, p8):
+def goLeft_x(p1, p2, p3, p4, p5, p6, p7, p8):
     print(p3)
     p1[0]-=10
     p2[0]-=10
@@ -55,7 +62,7 @@ def goLeft(p1, p2, p3, p4, p5, p6, p7, p8):
     p7[0]+=10
     p8[0]+=10
 
-def goRight(p1, p2, p3, p4, p5, p6, p7, p8):
+def goRight_x(p1, p2, p3, p4, p5, p6, p7, p8):
     print(p1)
     p1[0]+=10
     p2[0]+=10
@@ -67,6 +74,17 @@ def goRight(p1, p2, p3, p4, p5, p6, p7, p8):
     p7[0]-=10
     p8[0]-=10
 
+#y
+
+def submerge(p1, p2, p3, p4, p5, p6, p7, p8):
+    print("submerged left")
+
+#ideia - change positions of each line (make each line a variable), and then add transitions. for example:
+# line 1 - xy
+# line 2 - -x-y
+# line 3 - -2x-2y
+# line 4 - -2x-2y
+
 
 running = True
 while running:
@@ -75,29 +93,29 @@ while running:
             running = False
 
 
-    pygame.draw.line(screen, red, p1, p2, 2)
-    pygame.draw.line(screen, red, p1, p3, 2)
-    pygame.draw.line(screen, red, p2, p4, 2)
-    pygame.draw.line(screen, red, p3, p4, 2)
+    pygame.draw.line(screen, red, line1[0], line1[1], 2)
+    #pygame.draw.line(screen, red, p1, p3, 2)
+    #pygame.draw.line(screen, red, p2, p4, 2)
+    pygame.draw.line(screen, blue, line4[0], line4[1], 2)
 
     #pygame.draw.line(screen, red, p1, p4, 2)
     #pygame.draw.line(screen, red, p2, p3, 2)
 
-    pygame.draw.line(screen, red, p5, p6, 2)
-    pygame.draw.line(screen, red, p5, p7, 2)
-    pygame.draw.line(screen, red, p6, p8, 2)
-    pygame.draw.line(screen, red, p7, p8, 2)
+    pygame.draw.line(screen, green, line2[0], line2[1], 2)
+    #pygame.draw.line(screen, red, p5, p7, 2)
+    #pygame.draw.line(screen, red, p6, p8, 2)
+    pygame.draw.line(screen, yellow, line3[0], line3[1], 2)
 
 
-    pygame.draw.line(screen, red, p1, p5, 2)
-    pygame.draw.line(screen, red, p2, p6, 2)
-    pygame.draw.line(screen, red, p3, p7, 2)
-    pygame.draw.line(screen, red, p4, p8, 2)
+    #pygame.draw.line(screen, red, p1, p5, 2)
+    #pygame.draw.line(screen, red, p2, p6, 2)
+    #pygame.draw.line(screen, red, p3, p7, 2)
+    #pygame.draw.line(screen, red, p4, p8, 2)
 
     pygame.display.update()
     fps.tick(60)
 
-    rotate(p1, p2, p3, p4, p5, p6, p7, p8)
+    #rotate_x(p1, p2, p3, p4, p5, p6, p7, p8)
     screen.fill((0,0,0))
         
 
