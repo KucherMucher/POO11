@@ -28,11 +28,18 @@ while running:
         for culumn in range(8):
             color = white if cor else black
             pygame.draw.rect(screen, color, (rect_coord[0]+(rect_size*culumn), rect_coord[1]+(rect_size*raw), rect_size, rect_size))
+
+            leter = chr(65+culumn)
+            text = fonte.render(f"{chr(65+culumn)}", True, (0, 0, 0))
+            number = fonte.render(f"{1+raw}", True, (0, 0, 0))
+
+            width = text.get_width()
+            height = text.get_height()
             
-            screen.blit(fonte.render(f"{chr(65+culumn)}", True, (0, 0, 0)), (rect_coord[0]+ 17+ rect_size*culumn, rect_coord[1]-rect_size/2))
-            screen.blit(fonte.render(f"{chr(65+culumn)}", True, (0, 0, 0)), (rect_coord[0]+17+ rect_size*culumn, rect_coord[1]+rect_size*8+10))
-            screen.blit(fonte.render(f"{1+raw}", True, (0, 0, 0)), (rect_coord[0]-rect_size/2, rect_coord[0]+14+rect_size*raw)) #é assim as coordenadas dos textos para fazer
-            screen.blit(fonte.render(f"{1+raw}", True, (0, 0, 0)), (rect_coord[0]+rect_size*8+10, rect_coord[0]+14+rect_size*raw))
+            screen.blit(text, (rect_coord[0] + rect_size*0.5 + rect_size*culumn - width/2, rect_coord[1]-rect_size/2))
+            screen.blit(text, (rect_coord[0] + rect_size*0.5 + rect_size*culumn - width/2, rect_coord[1]+rect_size*8+10))
+            screen.blit(number, (rect_coord[0]-rect_size/2, rect_coord[1] + rect_size*0.5 + rect_size*raw - height/2)) #é assim as coordenadas dos textos para fazer
+            screen.blit(number, (rect_coord[0]+rect_size*8+10, rect_coord[1] + rect_size*0.5 + rect_size*raw - height/2))
 
             cor = not cor
 
