@@ -59,3 +59,7 @@ match ex:
     case 8:
         for i in range(1, 11):
             print(f"{i} -> {i**2}")
+
+    case 9:
+        for i in range(1, 11):
+            print(round((i/10), 1))
