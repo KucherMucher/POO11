@@ -60,7 +60,7 @@ while running:
         pos_x = 0 - size_carro[0]
 
 
-    text = font.render(f"Velocidade atual: {vel} m/s", True, (250, 250, 250))
+    text = font.render(f"Velocidade atual: {vel} pix/frame", True, (250, 250, 250))
     text2 = font.render(f"Distância percorrida: {distance} pix.", True, (250, 250, 250))
     screen.fill((0, 120, 0))
     pygame.draw.rect(screen, (100, 100, 100), (0, 410, width, 100))
