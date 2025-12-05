@@ -63,3 +63,37 @@ match ex:
     case 9:
         for i in range(1, 11):
             print(round((i/10), 1))
+
+    case 10:
+        soma = 0
+        for i in range(1, 6):
+            soma += int(input(f"Introduza número {i}: "))
+
+        media = soma/5
+
+        print(f"Soma = {soma}")
+        print(f"Média = {media}")
+
+    case 11:
+        string1 = input("Instroduza uma palavra: ")
+        list = []
+
+        #usando loop
+
+        for i in string1:
+            list.append(i)
+
+        string2 = ""
+        n = len(string1)
+        for i in range(len(string1)): 
+            string2 += list[n-i-1]
+
+
+        #não usando loop
+        string3 = string1[::-1]
+
+        print(string1)
+        print(string2)
+        print(string3)
+
+        
