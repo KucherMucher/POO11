@@ -20,9 +20,16 @@ def fatorial(n):
 def el_primo(n):
     if n <= 1:
         return False
-    if n % 2 == 0:
+    elif n == 2:
+        return True
+    elif n % 2 == 0:
         return False
     
+    for i in range(3, int(n**0.5) + 1, 2): #3 porque o mínimo é 3, quilo porque verificar até raiz do número, e pulamos números pares
+        if n % i == 0:
+            return False
+        
+    return True
     
 
 s = int(input("Escolhe o exercício: "))
@@ -42,3 +49,7 @@ match s:
         n1 = fatorial(n)
         print(f"{n}! = {n1}")
     case 4:
+        n = int(input("Insire um número: "))
+        primo = el_primo(n)
+        print(f"{n} é número primo") if primo else print(f"{n} é número composto")
+        
