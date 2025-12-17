@@ -21,11 +21,15 @@ clock = pygame.time.Clock()
 # -------------------------------------------------------------
 BRANCO   = (255, 255, 255)
 PRETO    = (0, 0, 0)
-VERMELHO = (220, 20, 60)
-AZUL     = (30, 144, 255)
-VERDE    = (34, 139, 34)
-AMARELO  = (255, 215, 0)
+VERMELHO = (220*0.9, 20*0.9, 60*0.9)
+AZUL     = (30*0.9, 144*0.9, 255*0.9)
+VERDE    = (34*0.9, 139*0.9, 34*0.9)
+AMARELO  = (255*0.9, 215*0.9, 0*0.9)
 CINZENTO_ESCURO = (20, 20, 20)
+GREY_PURPLE = (50*0.9, 40, 100*0.8)
+WGREY_PURPLE = (100, 85, 150)
+GREY = (100*1.7, 105*1.6, 150*1.7)
+BPURPLE = (30*0.8, 10*0.8, 70*0.8)
 
 # -------------------------------------------------------------
 # IMAGEM DE FUNDO
@@ -33,7 +37,7 @@ CINZENTO_ESCURO = (20, 20, 20)
 # Se não existir, o código usa um fundo de cor lisa.
 # -------------------------------------------------------------
 try:
-    img_fundo = pygame.image.load("fundo_quiz.png") #Z:\\11F\\nao_tocas_grrrrr\\forvscode\POO\pygame exerc\\15\\2.jpg
+    img_fundo = pygame.image.load("Z:\\11F\\nao_tocas_grrrrr\\forvscode\POO\pygame exerc\\15\\fundo_quiz.jpg") #Z:\\11F\\nao_tocas_grrrrr\\forvscode\POO\pygame exerc\\15\\2.jpg
     img_fundo = pygame.transform.scale(img_fundo, (LARGURA, ALTURA))
     usar_imagem_fundo = True
 except:
@@ -55,7 +59,7 @@ num_pergunta = 1
 total_perguntas = 10
 pontuacao = 0
 
-pergunta = "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+pergunta = "O que é um sistema operativo?"
 
 # Respostas curtas para caberem numa linha dentro dos botões
 respostas = [
@@ -83,14 +87,14 @@ x_direita  = LARGURA - LARGURA_BOTAO - x_esquerda
 
 # rectângulos dos botões (posição e tamanho)
 botao_rects = [
-    pygame.Rect(x_esquerda, y_linha1, LARGURA_BOTAO, ALTURA_BOTAO),
-    pygame.Rect(x_direita,  y_linha1, LARGURA_BOTAO, ALTURA_BOTAO),
-    pygame.Rect(x_esquerda, y_linha2, LARGURA_BOTAO, ALTURA_BOTAO),
-    pygame.Rect(x_direita,  y_linha2, LARGURA_BOTAO, ALTURA_BOTAO),
+    pygame.Rect(x_esquerda-30, y_linha1-30, LARGURA_BOTAO+70, ALTURA_BOTAO+90),
+    pygame.Rect(x_direita-40,  y_linha1-30, LARGURA_BOTAO+70, ALTURA_BOTAO+90),
+    pygame.Rect(x_esquerda-30, y_linha2-20, LARGURA_BOTAO+70, ALTURA_BOTAO+90),
+    pygame.Rect(x_direita-40,  y_linha2-20, LARGURA_BOTAO+70, ALTURA_BOTAO+90),
 ]
 
 # cor de cada botão (uma cor diferente)
-cores_botoes = [AZUL, VERMELHO, VERDE, AMARELO]
+cores_botoes = [VERMELHO, AZUL, AMARELO, VERDE]
 
 # -------------------------------------------------------------
 # FUNÇÕES DE DESENHO DA INTERFACE
@@ -105,11 +109,12 @@ def desenhar_fundo():
 def desenhar_barra_superior():
     """Desenha a barra superior com nº da pergunta e pontuação."""
     altura_barra = 60
-    pygame.draw.rect(ecra, PRETO, (0, 0, LARGURA, altura_barra))
+    pygame.draw.rect(ecra, BPURPLE, (0, 0, LARGURA, altura_barra))
+    pygame.draw.line(ecra, GREY_PURPLE, (0, altura_barra), (LARGURA, altura_barra), width=3)
 
     texto_info = f"Pergunta: {num_pergunta}/{total_perguntas}   |   Pontuação: {pontuacao}"
     sup_info = fonte_info.render(texto_info, True, BRANCO)
-    rect_info = sup_info.get_rect(midtop=(LARGURA // 2, 10))
+    rect_info = sup_info.get_rect(midtop=(LARGURA // 2, 17))
     ecra.blit(sup_info, rect_info)
 
 def desenhar_pergunta():
@@ -118,19 +123,25 @@ def desenhar_pergunta():
     rect_pergunta = sup_pergunta.get_rect(center=(LARGURA // 2, int(ALTURA * 0.25)))
     size_backpergunta = sup_pergunta.get_size()
     rect_backpergunta = ((rect_pergunta.x-50, rect_pergunta.y-50), (size_backpergunta[0]+100, size_backpergunta[1]+100))
-    pygame.draw.rect(ecra, PRETO, rect_backpergunta, border_radius=15)
+    rect_frontpergunta = ((rect_pergunta.x-30, rect_pergunta.y-30), (size_backpergunta[0]+60, size_backpergunta[1]+60))
+    pygame.draw.rect(ecra, GREY_PURPLE, rect_backpergunta, border_radius=15)
+    pygame.draw.rect(ecra, WGREY_PURPLE, rect_frontpergunta, border_radius=10)
+    pygame.draw.rect(ecra, GREY, rect_backpergunta, width=3, border_radius=15)
+    pygame.draw.rect(ecra, GREY, rect_frontpergunta, width=2 ,border_radius=10)
     ecra.blit(sup_pergunta, rect_pergunta)
 
 def desenhar_botoes():
     """Desenha os quatro botões de resposta com texto numa linha, centrado."""
-    pygame.draw.rect(ecra, PRETO, (x_esquerda-50, y_linha1-50, x_direita*1.53, ALTURA_BOTAO*3+ESP_VERTICAL))
+    pygame.draw.rect(ecra, GREY_PURPLE, (x_esquerda-50, y_linha1-50, x_direita*1.53, ALTURA_BOTAO*3+ESP_VERTICAL+30), border_radius=30)
+    pygame.draw.rect(ecra, GREY, (x_esquerda-50, y_linha1-50, x_direita*1.53, ALTURA_BOTAO*3+ESP_VERTICAL+30), width=3 ,border_radius=30)
     for i, rect in enumerate(botao_rects):
         # desenhar o botão (retângulo) com cantos arredondados
         pygame.draw.rect(ecra, cores_botoes[i], rect, border_radius=15)
+        pygame.draw.rect(ecra, GREY, rect, width=2 ,border_radius=15)
 
         # desenhar o texto da resposta (uma linha)
         texto = respostas[i]
-        sup_txt = fonte_resposta.render(texto, True, PRETO)
+        sup_txt = fonte_resposta.render(texto, True, BRANCO)
         rect_txt = sup_txt.get_rect(center=rect.center)
         ecra.blit(sup_txt, rect_txt)
 
