@@ -24,13 +24,13 @@ PRETO    = (0, 0, 0)
 VERMELHO = (220*0.9, 20*0.9, 60*0.9)
 AZUL     = (30*0.9, 144*0.9, 255*0.9)
 VERDE    = (34*0.9, 139*0.9, 34*0.9)
-AMARELO  = (255*0.9, 215*0.9, 0*0.9)
+AMARELO  = (255*0.9, 215*0.9, 0)
 CINZENTO_ESCURO = (20, 20, 20)
 GREY_PURPLE = (50*0.9, 40, 100*0.8)
 WGREY_PURPLE = (100, 85, 150)
 GREY = (100*1.7, 105*1.6, 150*1.7)
 BPURPLE = (30*0.8, 10*0.8, 70*0.8)
-
+LARANJA  = (255*0.9, 115*0.9, 10*0.9)
 # -------------------------------------------------------------
 # IMAGEM DE FUNDO
 # Colocar um ficheiro "fundo_quiz.jpg" na mesma pasta do código.
@@ -49,7 +49,7 @@ except:
 # O número indica o tamanho da letra
 # -------------------------------------------------------------
 fonte_pergunta = pygame.font.Font(None, 52)  # pergunta grande
-fonte_resposta = pygame.font.Font(None, 32)  # texto das respostas
+fonte_resposta = pygame.font.Font(None, 52)  # texto das respostas
 fonte_info     = pygame.font.Font(None, 32)  # pontuação e nº pergunta
 
 # -------------------------------------------------------------
@@ -57,7 +57,7 @@ fonte_info     = pygame.font.Font(None, 32)  # pontuação e nº pergunta
 # -------------------------------------------------------------
 num_pergunta = 1
 total_perguntas = 10
-pontuacao = 0
+pontuacao = 369
 
 pergunta = "O que é um sistema operativo?"
 
@@ -106,28 +106,82 @@ def desenhar_fundo():
     else:
         ecra.fill(BRANCO)
 
-def desenhar_barra_superior():
+def desenhar_pergunta_pontuacao(cor):
     """Desenha a barra superior com nº da pergunta e pontuação."""
+    
+
+    
+    
+
+    #nperguntas-----------------------------
+    npergunta_info = f"Pergunta: {num_pergunta}/{total_perguntas}"
+    sup_nper = fonte_info.render(npergunta_info, True, BRANCO)
+    
+
+    rect_nper = sup_nper.get_rect(center=(LARGURA // 2, int(ALTURA * 0.16)))
+
+    size_npergunta = sup_nper.get_size()
+    rect_npergunta = ((rect_nper.x-40, rect_nper.y-25), (size_npergunta[0]+80, size_npergunta[1]+100))
+
+    rect_npersub = ((rect_nper.x-20, rect_nper.y-11), (size_npergunta[0]+40, size_npergunta[1]+20))
+    
+    pygame.draw.rect(ecra, GREY_PURPLE, rect_npergunta, border_radius=8)
+    pygame.draw.rect(ecra, WGREY_PURPLE, rect_npersub, border_radius=5)
+
+
+    pygame.draw.rect(ecra, GREY, rect_npergunta, width=3, border_radius=8)
+    pygame.draw.rect(ecra, GREY, rect_npersub, width=2, border_radius=5)
+
+    ecra.blit(sup_nper, rect_nper)
+
+    #pontuação-------------------------
+    pontuacao_info = f"Pontuação: {pontuacao}"
+
+    sup_pon = fonte_info.render(pontuacao_info, True, BRANCO)
+
+    rect_pon = sup_pon.get_rect(center=(int(LARGURA-350), int(ALTURA - 570)))
+
+    size_pontuacao = sup_pon.get_size()
+    rect_pontuacao = ((rect_pon.x-40, rect_pon.y-25), (size_pontuacao[0]+80, size_pontuacao[1]+80))
+
+    rect_ponsub = ((rect_pon.x-20, rect_pon.y-11), (size_pontuacao[0]+40, size_pontuacao[1]+20))
+
+    pygame.draw.rect(ecra, GREY_PURPLE, rect_pontuacao, border_radius=8)
+    pygame.draw.rect(ecra, WGREY_PURPLE, rect_ponsub, border_radius=5)
+
+
+    pygame.draw.rect(ecra, GREY, rect_pontuacao, width=3, border_radius=8)
+    pygame.draw.rect(ecra, GREY, rect_ponsub, width=2, border_radius=5)
+
+    
+    ecra.blit(sup_pon, rect_pon)
+
+    #barra de continuação
     altura_barra = 60
     pygame.draw.rect(ecra, BPURPLE, (0, 0, LARGURA, altura_barra))
+    pygame.draw.rect(ecra, cor, (0, 0, num_pergunta * (LARGURA / total_perguntas), altura_barra))
     pygame.draw.line(ecra, GREY_PURPLE, (0, altura_barra), (LARGURA, altura_barra), width=3)
-
-    texto_info = f"Pergunta: {num_pergunta}/{total_perguntas}   |   Pontuação: {pontuacao}"
-    sup_info = fonte_info.render(texto_info, True, BRANCO)
-    rect_info = sup_info.get_rect(midtop=(LARGURA // 2, 17))
-    ecra.blit(sup_info, rect_info)
 
 def desenhar_pergunta():
     """Desenha a pergunta em grande, centrada na parte superior."""
     sup_pergunta = fonte_pergunta.render(pergunta, True, BRANCO)
     rect_pergunta = sup_pergunta.get_rect(center=(LARGURA // 2, int(ALTURA * 0.25)))
+
+    """Definir scale_rect da pergunta"""
     size_backpergunta = sup_pergunta.get_size()
     rect_backpergunta = ((rect_pergunta.x-50, rect_pergunta.y-50), (size_backpergunta[0]+100, size_backpergunta[1]+100))
     rect_frontpergunta = ((rect_pergunta.x-30, rect_pergunta.y-30), (size_backpergunta[0]+60, size_backpergunta[1]+60))
+
+    
+    
+    """Desenha scale_rect"""
     pygame.draw.rect(ecra, GREY_PURPLE, rect_backpergunta, border_radius=15)
     pygame.draw.rect(ecra, WGREY_PURPLE, rect_frontpergunta, border_radius=10)
+
+    #border
     pygame.draw.rect(ecra, GREY, rect_backpergunta, width=3, border_radius=15)
     pygame.draw.rect(ecra, GREY, rect_frontpergunta, width=2 ,border_radius=10)
+
     ecra.blit(sup_pergunta, rect_pergunta)
 
 def desenhar_botoes():
@@ -141,6 +195,11 @@ def desenhar_botoes():
 
         # desenhar o texto da resposta (uma linha)
         texto = respostas[i]
+        textSize = sup_txt.get_size()
+        if textSize[0] > 10:
+            lenght = len(texto)
+            respParte1 = slice(9,2) #ACABARRRRRRRRR
+        print(textSize)
         sup_txt = fonte_resposta.render(texto, True, BRANCO)
         rect_txt = sup_txt.get_rect(center=rect.center)
         ecra.blit(sup_txt, rect_txt)
@@ -159,10 +218,25 @@ while running:
         # tecla ESC para sair do modo fullscreen
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             running = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            num_pergunta += 1
 
     # desenhar todos os elementos da interface
+
+    cor = BRANCO
+    dificuldade = 2
+
+    match dificuldade:
+        case 1:
+            cor = VERDE
+        case 2:
+            cor = AMARELO
+        case 3:
+            cor = LARANJA
+        case 4:
+            cor = VERMELHO
     desenhar_fundo()
-    desenhar_barra_superior()
+    desenhar_pergunta_pontuacao(cor)
     desenhar_pergunta()
     desenhar_botoes()
 
