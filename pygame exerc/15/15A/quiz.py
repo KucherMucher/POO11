@@ -194,13 +194,26 @@ def desenhar_botoes():
         pygame.draw.rect(ecra, GREY, rect, width=2 ,border_radius=15)
 
         # desenhar o texto da resposta (uma linha)
-        texto = respostas[i]
-        textSize = sup_txt.get_size()
-        if textSize[0] > 10:
+        """texto = respostas[i]
+        textSize = len(texto)
+        if textSize > 10:
             lenght = len(texto)
-            respParte1 = slice(9,2) #ACABARRRRRRRRR
+            respParte1 = texto[0 : 9] #ACABARRRRRRRRR
+            part2Len = lenght - 9
+            respParte2 = texto[-part2Len:]
+            respParte1 = list(respParte1)
+            respParte1.append('\\')
+            respParte1.append('n')
+            respParte1 = ''.join(respParte1)
+            newTexto = respParte1 + respParte2
         print(textSize)
-        sup_txt = fonte_resposta.render(texto, True, BRANCO)
+
+        sup_txt = fonte_resposta.render(newTexto, True, BRANCO)
+        rect_txt = sup_txt.get_rect(center=rect.center)
+        ecra.blit(sup_txt, rect_txt)"""
+
+        texto = respostas[i]
+        sup_txt = fonte_resposta.render(texto, True, PRETO)
         rect_txt = sup_txt.get_rect(center=rect.center)
         ecra.blit(sup_txt, rect_txt)
 

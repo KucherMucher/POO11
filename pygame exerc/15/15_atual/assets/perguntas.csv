@@ -1,0 +1,101 @@
+Nº Pergunta,Nível,Pergunta,Resposta Correta,Resposta 2,Resposta 3,Resposta 4
+1,1,O que é um computador?,Uma máquina eletrónica de processamento,Uma mesa de madeira,Um simples livro em papel,Um candeeiro de secretária
+2,1,Qual é o dispositivo usado para ver o que o computador está a fazer?,Um monitor de computador,Uma impressora de documentos,Um conjunto de colunas,Uma pen USB vazia
+3,1,Qual é o dispositivo usado para escrever texto no computador?,Um teclado de computador,Um rato ótico,Um par de auscultadores,Um microfone de mesa
+4,1,Qual destes dispositivos é um dispositivo de entrada?,Um rato de computador,Um monitor LED,Uma impressora a cores,Um projetor de vídeo
+5,1,O que devemos fazer para guardar um trabalho num programa?,Carregar no comando de guardar,Desligar o PC pelo botão,Tirar o cabo da tomada,Carregar muitas vezes em Esc
+6,1,Qual destes exemplos corresponde a um sistema operativo?,O sistema operativo Windows,A rede social Facebook,O navegador Google Chrome,A plataforma YouTube
+7,1,Qual é o dispositivo utilizado para imprimir documentos em papel?,Uma impressora de documentos,Um scanner de imagens,Um teclado mecânico,Um monitor de secretária
+8,1,Que tipo de programa usamos para navegar em páginas da Internet?,Um browser de Internet,Um editor de imagens,Um leitor de música,Um programa antivírus
+9,1,O que é uma palavra-passe?,Um código secreto de acesso,Um nome simples de ficheiro,Um jogo online qualquer,Um tipo conhecido de vírus
+10,1,O que devemos fazer antes de desligar o computador?,Encerrar corretamente o sistema,Puxar logo a ficha da tomada,Manter o botão de ligar premido,Retirar o disco rígido interno
+11,1,O que é um ficheiro num computador?,Um conjunto organizado de dados,Uma tecla do teclado,Um cabo de alimentação,Uma pasta física em papel
+12,1,Em que parte do ecrã se encontra normalmente o botão Iniciar no Windows?,No canto inferior esquerdo,No centro exato do ecrã,Na parte de cima do rato,Na traseira da torre do PC
+13,1,O que é um rato de computador?,Um dispositivo de apontar,Um vírus informático perigoso,Um tipo especial de monitor,Uma coluna de som potente
+14,1,Qual destes dispositivos é um dispositivo móvel?,Um smartphone moderno,Um monitor de secretária,Uma impressora de secretária,Um router fixo de parede
+15,1,Em que zona do navegador escrevemos o endereço de um site?,Na barra de endereços,Na barra de tarefas do sistema,Na área de trabalho do Windows,No menu Iniciar do Windows
+16,1,Qual é o dispositivo mais adequado para guardar ficheiros e transportar dados?,Uma pen USB portátil,Um par de colunas de som,Uma webcam simples,Um teclado sem fios
+17,1,O que é um nome de utilizador num sistema informático?,A identificação do utilizador,O nome interno do computador,O nome dado ao ficheiro,O endereço completo do site
+18,1,O que é uma aplicação de computador ou telemóvel?,Um programa que faz uma tarefa,Um cabo de ligação elétrica,Um componente físico interno,Uma folha de papel A4
+19,1,O que é o Wi-Fi?,Uma rede sem fios para dados,Uma impressora ligada por cabo,Um editor de texto simples,Uma loja online de compras
+20,1,Qual destes exemplos é uma rede social?,A rede social Instagram,O processador de texto Word,O sistema operativo Windows,Um programa antivírus grátis
+21,1,Que dispositivo precisamos para ouvir som do computador?,Umas colunas ou auscultadores,Uma impressora multifunções,Um scanner de mesa,Um monitor extra grande
+22,1,O que significa fazer login num site ou aplicação?,Entrar numa conta pessoal,Apagar uma conta antiga,Formatar todo o computador,Mudar o idioma do sistema
+23,1,Qual destas opções é uma palavra-passe mais forte?,Ab3C9z!7 com símbolos,123456 muito simples,paulo em minúsculas,escola2020 previsível
+24,1,O que acontece normalmente quando clicamos num link numa página web?,Abre outra página ou recurso,O computador desliga-se sozinho,Um ficheiro é apagado logo,O disco é formatado inteiro
+25,1,O que devemos fazer primeiro se o computador bloquear e deixar de responder?,Esperar e tentar fechar programas,Puxar logo o cabo da tomada,Bater no computador com força,Apagar todos os ficheiros guardados
+26,2,O que é o hardware de um computador?,A parte física do sistema,Os programas instalados nele,Os ficheiros criados pelo aluno,As contas de email dos colegas
+27,2,O que é o software de um computador?,Os programas que ele usa,Os cabos e fichas,Os componentes dentro da caixa,As pastas guardadas na mochila
+28,2,"O que indica a extensão de um ficheiro, por exemplo docx?",O tipo de ficheiro utilizado,O tamanho total do disco,A velocidade do computador,O número de utilizadores ativos
+29,2,O que é a cloud ou nuvem em informática?,Armazenamento de dados online,Um disco rígido dentro do PC,Um cabo de rede de cobre,Uma impressora Wi-Fi partilhada
+30,2,Para que serve o atalho de teclado Ctrl C?,Copiar o conteúdo selecionado,Colar texto para um sítio,Apagar o texto escolhido,Guardar o documento atual
+31,2,Qual é uma boa prática de segurança em relação à palavra-passe?,Nunca partilhar a palavra-passe,Escrevê-la num papel visível,Usar a mesma em todos os sites,Aceitar pedidos de desconhecidos
+32,2,O que é um navegador ou browser de Internet?,Um programa para abrir sites,Um dispositivo físico de rede,Um vírus perigoso da web,Um simples serviço de email
+33,2,O que é um email?,Uma mensagem eletrónica enviada,Um ficheiro guardado num disco,Um programa antivírus instalado,Um componente de hardware
+34,2,Qual é uma característica de uma palavra-passe segura?,Ter letras números e símbolos,Ser igual ao nome do utilizador,Ser muito simples de lembrar,Ser igual em todos os sites
+35,2,Qual destes sistemas operativos é de código aberto?,O sistema Linux,O sistema Windows,O sistema macOS da Apple,O Android
+36,2,O que é uma pasta num computador?,Um local para organizar ficheiros,Um vírus que apaga tudo,Um programa para ver vídeos,Uma conta de utilizador nova
+37,2,Para que serve uma porta USB no computador?,Para ligar dispositivos externos,Para aumentar o brilho do ecrã,Para ligar o PC à corrente,Para regular o volume do som
+38,2,Qual destas unidades de medida é a maior?,Um gigabyte de dados,Um megabyte de dados,Um kilobyte de dados,Um único byte de dados
+39,2,O que é um motor de busca na Internet?,Um site para pesquisar informação,Um editor de textos online,Um tipo de memória interna,Um disco externo de backup
+40,2,O que é spam no contexto do email?,Mensagem indesejada ou publicidade,Um programa educativo para alunos,Um ficheiro de sistema importante,Um antivírus integrado no email
+41,2,O que é uma captura de ecrã ou screenshot?,Uma imagem do que está no ecrã,Um vídeo de longa duração,Um ficheiro apenas de áudio,Um documento de texto simples
+42,2,O que acontece quando esvaziamos a reciclagem no computador?,Os ficheiros são removidos do disco,Os ficheiros mudam apenas de pasta,Os ficheiros ficam comprimidos,Os ficheiros ficam mais seguros
+43,2,O que é uma atualização de software?,Instalar uma versão mais recente,Apagar completamente o programa,Mudar apenas o ícone do programa,Mover o programa para outra pasta
+44,2,O que é um código QR?,Uma imagem que guarda dados,Um vírus para smartphones,Um ficheiro de vídeo qualquer,Um editor de texto avançado
+45,2,Para que serve o GPS num smartphone?,Para indicar a localização exata,Para melhorar a qualidade das fotos,Para aumentar o volume do som,Para proteger contra vírus
+46,2,Qual é a principal diferença entre um portátil e um computador de secretária?,O portátil é fácil de transportar,O portátil não precisa de bateria,O de secretária não precisa de monitor,O de secretária funciona sem sistema operativo
+47,2,O que significa fazer download de um ficheiro?,Descarregar o ficheiro da Internet,Enviar o ficheiro para a Internet,Apagar o ficheiro do computador,Mover o ficheiro para a reciclagem
+48,2,O que significa fazer upload de um ficheiro?,Enviar o ficheiro para a Internet,Descarregar o ficheiro da Internet,Comprimir o ficheiro num ZIP,Instalar novos programas no PC
+49,2,O que é o Bluetooth?,Uma ligação sem fios de curto alcance,Um vírus conhecido de computador,Um editor de texto simples,Um sistema operativo completo
+50,2,Para que serve um programa antivírus?,Para detetar e remover malware,Para aumentar a velocidade da Internet,Para criar documentos de texto,Para melhorar a qualidade do som
+51,3,"Numa arquitetura de computador, qual é a função principal da CPU?",Executar instruções do programa,Guardar ficheiros no disco,Mostrar imagem no monitor,Fornecer energia ao sistema
+52,3,Em que se distingue a memória RAM do disco rígido?,Guarda dados apenas temporariamente,Guarda dados de forma permanente,Serve apenas para ficheiros de vídeo,É usada apenas como antivírus
+53,3,O que acontece normalmente aos dados guardados na RAM quando desligamos o computador?,São perdidos e apagados,São guardados automaticamente no disco,São enviados para a cloud,Ficam guardados numa pen USB
+54,3,Qual é a função principal do kernel de um sistema operativo?,Gerir recursos de hardware,Enviar emails para utilizadores,Criar documentos de texto,Imprimir relatórios automáticos
+55,3,Porque é que um site com HTTPS é mais seguro do que um site com HTTP?,Porque cifra os dados enviados,Porque tem mais cores na página,Porque usa mais cookies diferentes,Porque mostra mais anúncios ao utilizador
+56,3,Qual é o objetivo de um ataque de phishing por email?,Roubar dados ou credenciais,Atualizar automaticamente o computador,Acelerar a ligação à Internet,Criar uma cópia de segurança
+57,3,"Numa rede, que tipo de tráfego controla uma firewall?",O tráfego de entrada e saída,Apenas o tráfego de entrada,Apenas o tráfego de saída,Só o tráfego local do computador
+58,3,O que caracteriza o software de código aberto em termos legais?,O código pode ser visto e alterado,O programa tem de ser pago sempre,O código é totalmente secreto,O programa é apenas de demonstração
+59,3,Qual é a principal diferença entre linguagem compilada e interpretada?,Na compilada compila antes de correr,Na interpretada compila primeiro,Nenhuma usa código-fonte,Nenhuma usa o processador
+60,3,Qual é o objetivo de escrever um algoritmo em pseudocódigo?,Planear a solução de forma simples,Compilar diretamente o programa,Formatar o texto para impressão,Criar imagens para o relatório
+61,3,"Numa base de dados relacional, o que é um registo?",Uma linha completa da tabela,Uma coluna de uma tabela,Um campo isolado de dados,Uma chave principal inteira
+62,3,Qual é a vantagem de usar uma base de dados em vez de uma folha de cálculo para muitos utilizadores?,Permite acessos concorrentes e seguros,Mostra mais cores nas células,Permite mais fontes de letra,Gera mais gráficos automáticos
+63,3,"Numa folha de cálculo, o que identifica a célula B3?",A coluna B e a linha 3,A coluna 3 e a linha B,A terceira folha do livro,A cor da borda da célula
+64,3,"Numa rede em estrela, a que dispositivo estão ligados todos os computadores?",A um switch central,Diretamente ao router,À impressora da rede,Ao servidor web externo
+65,3,Qual é a função principal de um switch numa rede local?,Comutar e encaminhar pacotes,Traduzir nomes de domínio,Gerar energia elétrica,Criar cópias de segurança
+66,3,Qual é uma vantagem técnica de um SSD face a um disco rígido mecânico?,Não tem partes móveis internas,Produz mais ruído ao trabalhar,Tem sempre maior latência,É mais frágil a choques físicos
+67,3,Porque é importante fazer cópias de segurança regulares dos dados?,Para evitar perda de informação,Para aumentar a velocidade do PC,Para eliminar automaticamente vírus,Para aumentar a memória RAM
+68,3,Qual é um exemplo típico de autenticação de dois fatores?,Senha e código enviado por SMS,Duas senhas iguais seguidas,Dois emails diferentes de login,Dois utilizadores a entrar juntos
+69,3,Em que se distingue uma cookie do histórico do navegador?,A cookie é um ficheiro gravado,O histórico é um ficheiro único,A cookie é sempre uma imagem,O histórico é sempre um vídeo
+70,3,O que indica a largura de banda de uma ligação de Internet?,A quantidade de dados por segundo,O número total de computadores,O tamanho total do disco rígido,A velocidade do processador central
+71,3,Porque é que uma latência alta é má para jogos online?,Porque provoca lag e atrasos,Porque aumenta os fotogramas,Porque melhora sempre o som,Porque reduz o valor do ping
+72,3,Que vantagem tem o modelo SaaS para as empresas?,Não exige instalar o software localmente,Não precisa de ligação à Internet,Não precisa de utilizadores humanos,Não guarda quaisquer dados do cliente
+73,3,Qual é a diferença entre streaming e download tradicional de vídeo?,No streaming vê-se enquanto descarrega,No download vê-se apenas offline,No streaming só funciona em CD,No download só funciona em pen
+74,3,Porque é que o sistema operativo é essencial para o computador?,Porque gere hardware e programas,Porque cria automaticamente vírus,Porque aumenta o tamanho do disco,Porque substitui por completo a BIOS
+75,3,Porque se comprimem ficheiros antes de os enviar pela Internet?,Para reduzir o tamanho do envio,Para instalar mais vírus neles,Para diminuir a segurança dos dados,Para aumentar a latência da rede
+76,4,Quantos bits tem um byte?,Oito bits de informação,Quatro bits apenas,Doze bits completos,Dezasseis bits inteiros
+77,4,Que papel tem o HTML numa página web moderna?,Definir a estrutura da página,Definir apenas o estilo visual,Definir a lógica do servidor,Definir a base de dados usada
+78,4,Qual é a função principal do DNS na Internet?,Traduzir nomes em endereços IP,Guardar emails dos utilizadores,Encriptar ficheiros do sistema,Medir a largura de banda
+79,4,Que informação avalia o comando ping ao testar uma máquina remota?,Tempo de resposta e perda de pacotes,Tamanho do disco do servidor,Uso da memória RAM remota,Versão do sistema operativo
+80,4,Porque é arriscado introduzir palavras-passe em Wi-Fi público sem proteção?,Porque alguém pode intercetar os dados,Porque gasta mais bateria do telemóvel,Porque cria automaticamente spam,Porque apaga ficheiros do computador
+81,4,O que distingue cifra simétrica de cifra assimétrica?,Na simétrica usa uma só chave,Na simétrica usa duas chaves,Nenhuma das duas usa chaves,Apenas a assimétrica usa senha
+82,4,"Numa VPN, que informação fica escondida dos sites visitados?",O endereço IP real do utilizador,O tipo de sistema operativo usado,O idioma definido no navegador,A resolução do ecrã do utilizador
+83,4,Qual é uma vantagem de usar máquinas virtuais em laboratório de testes?,Permitem isolamento dos sistemas,Geram mais ruído de ventoinhas,Gastam muito mais energia,Diminuem a segurança total
+84,4,"No Git, o que representa um commit num repositório?",Uma versão salva do projeto,Um erro de rede temporário,A criação de uma nova conta,Um ramo remoto sem ficheiros
+85,4,Em que se distingue IA de programação tradicional com regras fixas?,Pode aprender a partir de dados,Nunca utiliza qualquer tipo de dados,Usa apenas regras pré-definidas,Dispensa sempre qualquer treino
+86,4,"Em machine learning, qual é o objetivo dos dados de teste?",Avaliar o desempenho do modelo,Treinar inicialmente o modelo,Apagar pesos já treinados,Criar rótulos para o treino
+87,4,O que é viés algorítmico num sistema de decisão automática?,Uma tendência injusta nos resultados,Um aumento normal da velocidade,Uma simples latência da rede,Um ruído aleatório nos dados
+88,4,"Num cenário de IoT, que vantagem tem um termóstato inteligente ligado à Internet?",Permite controlo remoto da temperatura,Permite usar mais cabos físicos,Aumenta o consumo de tinta,Produz mais folhas de papel
+89,4,Qual é a diferença básica entre sensor e atuador num sistema físico?,O sensor mede e o atuador atua,O sensor escreve e o atuador lê,O sensor compila e interpreta,O sensor liga e desliga o Wi-Fi
+90,4,O que significa aumentar a resolução de uma imagem digital?,Adicionar mais píxeis à imagem,Remover píxeis da fotografia,Reduzir o número de cores,Diminuir o tamanho em bytes
+91,4,Que modelo de cores é usado normalmente em ecrãs digitais?,O modelo de cores RGB,O modelo de cores CMYK,O modelo de cores HSV,O sistema de cores PANTONE
+92,4,"Quando dizemos que um ecrã é 1080p, o que estamos a indicar?",Tem 1080 linhas de píxeis,Tem 1080 colunas de píxeis,Suporta 1080 cores diferentes,Trabalha a 1080 hertz
+93,4,Qual é a ideia central das licenças Creative Commons?,Permitir uso com certas condições,Tornar sempre o código aberto,Permitir uso sem autor conhecido,Permitir uso apenas pago
+94,4,Que direito dá o RGPD a um titular de dados?,Direito de aceder aos seus dados,Direito de vender dados de todos,Direito de criar o próprio RGPD,Direito de ignorar as leis
+95,4,O que é anonimizar um conjunto de dados pessoais?,Retirar dados que identificam pessoas,Apagar todos os dados guardados,Traduzir dados para outra língua,Encriptar apenas a palavra-passe
+96,4,"Em termos simples, como funciona o registo de blocos numa blockchain?",Os blocos são ligados em cadeia,Os blocos ficam todos soltos,Os blocos são sempre secretos,Cada bloco é totalmente isolado
+97,4,Qual é o objetivo principal da realidade virtual num simulador?,Criar uma experiência imersiva,Criar apenas texto em ecrã,Criar fichas para impressão,Criar cópias de segurança
+98,4,"Na realidade aumentada, o que é acrescentado ao mundo real?",Uma camada digital de informação,Uma camada física de tijolos,Som analógico de alta fidelidade,Apenas mais luz natural
+99,4,Qual é uma aplicação prática de impressão 3D na indústria?,Produzir rapidamente protótipos,Produzir novos vírus informáticos,Criar ficheiros de cookies,Gerar automaticamente mensagens spam
+100,4,Que objetivo tem a netiqueta nas interações online?,Promover respeito e boa educação,Aumentar cliques em anúncios,Garantir mais lucro às empresas,Criar ainda mais mensagens spam
