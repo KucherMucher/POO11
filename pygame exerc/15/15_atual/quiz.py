@@ -59,9 +59,6 @@ fonte_final    = pygame.font.Font(None, 72)  # da pontuação final
 
 
 
-
-
-
 # -------------------------------------------------------------
 # DADOS DO QUIZ (EXEMPLO SIMPLES)
 # -------------------------------------------------------------
@@ -69,7 +66,7 @@ def escolher_12_perguntas():
     """Esta função lê o ficheiro e escolhe 3 perguntas de cada nível."""
     todas = []
     # Abrimos o ficheiro para ler as informações
-    with open('perguntas.csv', mode='r', encoding='utf-8') as f:
+    with open(r'assets\perguntas.csv', mode='r', encoding='utf-8') as f:
         leitor = csv.DictReader(f)
         for linha in leitor:
             todas.append(linha)
@@ -119,31 +116,6 @@ pergunta_agora, opcoes_agora, correta_agora = buscar_dados_da_pergunta(indice)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 num_pergunta = 1
 total_perguntas = 12
 
@@ -186,10 +158,6 @@ def desenhar_fundo():
 
 def desenhar_pergunta_pontuacao(cor):
     """Desenha a barra superior com nº da pergunta e pontuação."""
-    
-
-    
-    
 
     #nperguntas-----------------------------
     npergunta_info = f"Pergunta: {indice+1}/{total_perguntas}"
@@ -309,19 +277,19 @@ while running:
         # tecla ESC para sair do modo fullscreen
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             running = False
-        if event.type == pygame.MOUSEBUTTONDOWN and not finale:
-            getpos = pygame.mouse.get_pos()
-            for i in range(4):
-                if botao_rects[i].collidepoint(getpos):
-                    num_pergunta+=1
-                    if opcoes_agora[i] == correta_agora:
-                        pontos += 1
-                    
-                    indice += 1
-                    if indice < len(perguntas_do_jogo):
-                        pergunta_agora, opcoes_agora, correta_agora = buscar_dados_da_pergunta(indice)
-                    else:
-                        finale = True
+        if event.type == pygame.KEYDOWN and not finale:
+            if event.key == pygame.K_1 or event.key == pygame.K_2 or event.key == pygame.K_3 or event.key == pygame.K_4:
+                num_pergunta+=1
+                
+                response = int(pygame.key.name(event.key))
+                if opcoes_agora[response-1] == correta_agora:
+                    pontos += 1
+                
+                indice += 1
+                if indice < len(perguntas_do_jogo):
+                    pergunta_agora, opcoes_agora, correta_agora = buscar_dados_da_pergunta(indice)
+                else:
+                    finale = True
         if not finale:
             if indice == 0:
                 cor = VERDE
