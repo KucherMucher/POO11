@@ -1,19 +1,24 @@
 import pygame # pyright: ignore[reportMissingImports]
 import math
+import sys
 
 pygame.init()
 
-screen = pygame.display.set_mode((900, 900))
+width  = 900
+height = 900
+screen = pygame.display.set_mode((width, height))
 
 fps = pygame.time.Clock()
 
-blue = (0, 0, 255)
-red = (255, 0, 0)
-ang1=math.pi*2
-ang2=math.pi/2
-ang3=math.pi
-ang4=(3*math.pi)/2
-time=0
+blue  = (0, 0, 255)
+red   = (255, 0, 0)
+green = (0, 255, 0)
+
+ang1 = math.pi*2
+ang2 = math.pi/2
+ang3 = math.pi
+ang4 = (3*math.pi)/2
+time = 0
 
 ellipse_rect_top=pygame.Rect(150, 200, 600, 150)
 
@@ -78,7 +83,14 @@ while running:
     #drawwing axis
 
     ellipse = pygame.draw.ellipse(screen, blue, ellipse_rect_top , 2)
-    ellipse = pygame.draw.ellipse(screen, blue, ellipse_rect_bottom , 2)
+    ellipse1 = pygame.draw.ellipse(screen, blue, ellipse_rect_bottom , 2)
+
+    
+
+    yy = 275
+    pygame.draw.line(screen, green, (0, yy), (width, yy))
+
+    
 
     #drawing points
     point1 = pygame.draw.circle(screen, red, (px1t,py1t), 5)
@@ -110,13 +122,15 @@ while running:
     line11=pygame.draw.line(screen, red, (point7.centerx, point7.centery), (point6.centerx, point6.centery), 2)
     line12=pygame.draw.line(screen, red, (point7.centerx, point7.centery), (point8.centerx, point8.centery), 2)
 
-    ang1+=0.1
-    ang2+=0.1
-    ang3+=0.1
-    ang4+=0.1
+    ang1+=0.02
+    ang2+=0.02
+    ang3+=0.02
+    ang4+=0.02
 
     pygame.display.update()
 
     fps.tick(24)
 
+pygame.quit()
+sys.exit()
     
