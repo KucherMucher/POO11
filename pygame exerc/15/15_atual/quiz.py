@@ -2,8 +2,11 @@ import pygame
 import sys
 import csv
 import random
+from pygame import mixer
+
 
 pygame.init()
+mixer.init()
 
 # -------------------------------------------------------------
 # CONFIGURAÇÃO DA JANELA EM ECRÃ INTEIRO
@@ -42,6 +45,17 @@ try:
     img_fundo = pygame.image.load(r'Z:\11F\nao_tocas_grrrrr\forvscode\POO\pygame exerc\15\15_atual\assets\fundo_quiz.jpg') #Z:\\11F\\nao_tocas_grrrrr\\forvscode\POO\pygame exerc\\15\\2.jpg
     img_fundo = pygame.transform.scale(img_fundo, (LARGURA, ALTURA))
     usar_imagem_fundo = True
+
+    # music: snak369 - day 369 in infinite ikea 
+    background_music = mixer.music.load(r"assets\369.mp3")
+    mixer.music.set_volume(0.3)
+    mixer.music.play()
+
+    #sounds
+    good = mixer.Sound(r"assets\good.mp3")
+    bad  = mixer.Sound(r"assets\bad.mp3")
+    good_ending = mixer.Sound(r"assets\good_ending.mp3")
+    bad_ending  = mixer.Sound(r"assets\bad_ending.mp3")
 except:
     usar_imagem_fundo = False
 
@@ -277,13 +291,24 @@ while running:
         # tecla ESC para sair do modo fullscreen
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             running = False
+
+        #mixer control
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
+            mixer.music.set_volume(mixer.music.get_volume() + 0.05)
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
+            mixer.music.set_volume(mixer.music.get_volume() - 0.05)
+        
+        #
         if event.type == pygame.KEYDOWN and not finale:
             if event.key == pygame.K_1 or event.key == pygame.K_2 or event.key == pygame.K_3 or event.key == pygame.K_4:
                 num_pergunta+=1
                 
                 response = int(pygame.key.name(event.key))
                 if opcoes_agora[response-1] == correta_agora:
+                    good.play()
                     pontos += 1
+                else:
+                    bad.play()
                 
                 indice += 1
                 if indice < len(perguntas_do_jogo):
@@ -313,10 +338,22 @@ while running:
             txt_fim = f"RESULTADO: {percentagem:.0f}%"
             img_fim = fonte_final.render(txt_fim, True, AMARELO)
             ecra.blit(img_fim, img_fim.get_rect(center=(LARGURA // 2, ALTURA // 2)))
+
+            if percentagem < 50:
+                bad_ending.play()
+            else:
+                good_ending.play()
+
+    if mixer.music.get_busy() == False:
+            mixer.music.play(start=1.56)
+
+        
+        
     
 
     # atualizar o ecrã
     pygame.display.flip()
 
+mixer.quit()
 pygame.quit()
 sys.exit()
