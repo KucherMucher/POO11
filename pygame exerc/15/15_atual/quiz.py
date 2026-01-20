@@ -52,10 +52,17 @@ try:
     mixer.music.play()
 
     #sounds
+    
     good = mixer.Sound(r"assets\good.mp3")
     bad  = mixer.Sound(r"assets\bad.mp3")
     good_ending = mixer.Sound(r"assets\good_ending.mp3")
     bad_ending  = mixer.Sound(r"assets\bad_ending.mp3")
+    
+    sound_array = [good, bad, good_ending, bad_ending]
+
+    for i in sound_array:
+        i.set_volume(0.3)
+    
 except:
     usar_imagem_fundo = False
 
@@ -254,28 +261,39 @@ def desenhar_botoes():
         pygame.draw.rect(ecra, GREY, rect, width=2 ,border_radius=15)
 
         # desenhar o texto da resposta (uma linha)
-        """texto = respostas[i]
-        textSize = len(texto)
-        if textSize > 10:
-            lenght = len(texto)
-            respParte1 = texto[0 : 9] #ACABARRRRRRRRR
-            part2Len = lenght - 9
-            respParte2 = texto[-part2Len:]
-            respParte1 = list(respParte1)
-            respParte1.append('\\')
-            respParte1.append('n')
-            respParte1 = ''.join(respParte1)
-            newTexto = respParte1 + respParte2
-        print(textSize)
-
-        sup_txt = fonte_resposta.render(newTexto, True, BRANCO)
-        rect_txt = sup_txt.get_rect(center=rect.center)
-        ecra.blit(sup_txt, rect_txt)"""
-
+        # desenhar o texto da resposta (uma linha)
+        idealNewline = rect.width - 50
         texto = opcoes_agora[i]
-        sup_txt = fonte_resposta.render(texto, True, BRANCO)
-        rect_txt = sup_txt.get_rect(center=rect.center)
-        ecra.blit(sup_txt, rect_txt)
+        newTexto = list(texto)
+        print(newTexto)
+        lenght = int(len(texto))
+        
+        words = texto.split(" ")
+        lines = []
+        current = ""
+
+        for w in words:
+            test = current + w + " "
+            if fonte_resposta.size(test)[0] > idealNewline:
+                lines.append(current)
+                current = w + " "
+            else:
+                current = test
+
+        lines.append(current)
+
+        
+        center = rect.center
+        
+        lineHeight = 50
+        totalTextHeight = len(lines) * lineHeight
+        startY = center[1] - totalTextHeight // 2  # vertically center the block of lines
+
+        for idx, line in enumerate(lines):
+            sup_txt = fonte_resposta.render(line, True, BRANCO)
+            rect_txt = sup_txt.get_rect(centerx=center[0])  # horizontally center
+            rect_txt.y = startY + idx * lineHeight + 10       # vertical position
+            ecra.blit(sup_txt, rect_txt)
 
 # -------------------------------------------------------------
 # CICLO PRINCIPAL
@@ -295,8 +313,14 @@ while running:
         #mixer control
         if event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
             mixer.music.set_volume(mixer.music.get_volume() + 0.05)
+            for i in sound_array:
+                i.set_volume(i.get_volume() + 0.05)
+            
         if event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
             mixer.music.set_volume(mixer.music.get_volume() - 0.05)
+            for i in sound_array:
+                i.set_volume(i.get_volume() - 0.05)
+
         
         #
         if event.type == pygame.KEYDOWN and not finale:
