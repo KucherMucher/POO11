@@ -264,9 +264,6 @@ def desenhar_botoes():
         # desenhar o texto da resposta (uma linha)
         idealNewline = rect.width - 50
         texto = opcoes_agora[i]
-        newTexto = list(texto)
-        print(newTexto)
-        lenght = int(len(texto))
         
         words = texto.split(" ")
         lines = []
