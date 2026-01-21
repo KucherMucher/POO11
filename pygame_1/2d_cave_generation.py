@@ -96,6 +96,7 @@ def CLEANUP_2():
         if my_neighbour_n == 8 and tile.e == True:
             tile.t = (tile_coord[0]+(tile_size*tile.c), tile_coord[1]+(tile_size*tile.r), tile_size, tile_size)
             tile.e = False
+
 def generate_cave():
     white_noise()
     ANIHILATE_loop()
