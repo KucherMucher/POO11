@@ -5,8 +5,10 @@ from selenium.webdriver.common.by import By as by
 from selenium.webdriver.support.ui import WebDriverWait as wdw
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException
+import pdfplumber
+import io
 
-driver = wd.Firefox()
+driver = wd.Chrome()
 
 
 print("Triathlon get results python script.")
@@ -33,18 +35,15 @@ for page in pages:
     except TimeoutException:
         pdf_href = href
 
-    driver.get(pdf_href)
-    wdw(driver, 3).until(ec.presence_of_all_elements_located((by.TAG_NAME, "span")))
+    pdf_response = requests.get(pdf_href)
 
-    pdf_soup = bs4(driver.page_source, "html.parser")
+    with pdfplumber.open(io.BytesIO(response.content)) as pdf:
+        text = page.extract_text()
+        rows = text.split("\n")
 
-    rows = str(pdf_soup).split("</br>")
-
-    
-
-    for row in rows:
-        if "Illia Kucher" in row:
-            print(f"\n{row}")
+        for row in rows:
+            if "Illia Kucher" in row:
+                print(row)
         
 
 driver.quit()
