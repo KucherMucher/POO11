@@ -1,0 +1,73 @@
+
+
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\amendments-client-1.toml.bak:51: 	#Makes hooks render faster using a block model instead of tile renderer. Cost is that animated and enchanted items will appear static
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\amendments-client-2.toml.bak:53: 	#Makes hooks render faster using a block model instead of tile renderer. Cost is that animated and enchanted items will appear static
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\amendments-client.toml:53: 	#Makes hooks render faster using a block model instead of tile renderer. Cost is that animated and enchanted items will appear static
+
+
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\carryon-common.toml:74: 	forbiddenTiles = ["#forge:immovable", "#forge:relocation_not_supported", "#neoforge:immovable", "#neoforge:relocation_not_supported", "minecraft:end_portal", "minecraft:piston_head", "#c:relocation_not_supported", "minecraft:end_gateway", "minecraft:tall_grass", "minecraft:large_fern", "minecraft:peony", "minecraft:rose_bush", "minecraft:lilac", "minecraft:sunflower", "minecraft:*_bed", "minecraft:*_door", "minecraft:big_dripleaf_stem", "minecraft:waterlily", "minecraft:cake", "minecraft:nether_portal", "minecraft:tall_seagrass", "animania:block_trough", "animania:block_invisiblock", "colossalchests:*", "ic2:*", "bigreactors:*", "forestry:*", "tconstruct:*", "rustic:*", "botania:*", "astralsorcery:*", "quark:colored_bed_*", "immersiveengineering:*", "embers:block_furnace", "embers:ember_bore", "embers:ember_activator", "embers:mixer", "embers:heat_coil", "embers:large_tank", "embers:crystal_cell", "embers:alchemy_pedestal", "embers:boiler", "embers:combustor", "embers:catalzyer", "embers:field_chart", "embers:inferno_forge", "storagedrawers:framingtable", "skyresources:*", "lootbags:*", "exsartagine:*", "aquamunda:tank", "opencomputers:*", "malisisdoors:*", "industrialforegoing:*", "minecolonies:*", "thaumcraft:pillar*", "thaumcraft:infernal_furnace", "thaumcraft:placeholder*", "thaumcraft:infusion_matrix", "thaumcraft:golem_builder", "thaumcraft:thaumatorium*", "magneticraft:oil_heater", "magneticraft:solar_panel", "magneticraft:steam_engine", "magneticraft:shelving_unit", "magneticraft:grinder", "magneticraft:sieve", "magneticraft:solar_tower", "magneticraft:solar_mirror", "magneticraft:container", "magneticraft:pumpjack", "magneticraft:solar_panel", "magneticraft:refinery", "magneticraft:oil_heater", "magneticraft:hydraulic_press", "magneticraft:multiblock_gap", "refinedstorage:*", "mcmultipart:*", "enderstorage:*", "betterstorage:*", "practicallogistics2:*", "wearablebackpacks:*", "rftools:screen", "rftools:creative_screen", "create:*", "magic_doorknob:*", "iceandfire:*", "ftbquests:*", "waystones:*", "contact:*", "framedblocks:*", "securitycraft:*", "forgemultipartcbe:*", "integrateddynamics:cable", "mekanismgenerators:wind_generator", "cookingforblockheads:cabinet", "cookingforblockheads:corner", "cookingforblockheads:counter", "cookingforblockheads:oven", "cookingforblockheads:toaster", "cookingforblockheads:milk_jar", "cookingforblockheads:cow_jar", "cookingforblockheads:fruit_basket", "cookingforblockheads:cooking_table", "cookingforblockheads:fridge", "cookingforblockheads:sink", "chipped:*", "irons_spellbooks:*", "create*:*", "simple_pipes:*", "libmultipart:*", "quark:tiny_potato", "ait:*", "vampirism:*", "extrastorage:*", "relics:researching_table", "sophisticatedstorage:*chest", "powah:*", "advancementtrophies:trophy", "mekanismgenerators:heat_generator", "mna:filler_block", "create_enchantment_industry:*", "graveyard:*", "immersivepetroleum:*", "tardis:interior_door", "cuffed:*"]
+
+
+
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\create-server.toml:519: 	#The volume of Air added by each level of the backtanks Capacity Enchantment
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\create-server.toml:522: 	enchantedBacktankCapacity = 300
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\simplehats.json:4026:       "name": "minecraft:enchant",
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\simplehats.json:4434:       "name": "minecraft:enchant",
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\simplehats.json:4655:       "name": "minecraft:enchant",
+
+
+
+
+
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\sophisticatedbackpacks-server.toml:523: 		#Turns on/off equiping the entity that wears backpack with armor. What armor material and how enchanted is scaled based on backpack tier the mob wears.
+
+
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\supplementaries-client.toml:182: 	#Renders an enchantment glint on placeable enchanted booksNote that turning this on will make book piles use tile renderer instead of baked models making them slower to render
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\supplementaries-client.toml:214: 		#Render the block outline for distant blocks that are reachable with a slingshot enchanted with Stasis
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\supplementaries-common.toml:355: 		#If enabled end crystals placed on a pedestals will provide an enchantment power bonus equivalent to 3 bookshelves
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\supplementaries-common.toml:358: 		crystal_enchanting = 3.0
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\supplementaries-common.toml:611: 	[tweaks.golden_apple_disenchant]
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\supplementaries-common.toml:653: 		#Allow bottling up xp by using a bottle on an enchanting table
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\supplementaries-common.toml:659: 		#Block that should be clicked on for bottling to work. Leave blank for enchanting table. You can put another block here from another mod if you find it more fitting
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\supplementaries-common.toml:685: 		#Allow books and enchanted books to be placed on the ground
+
+C:\Users\snak3\AppData\Roaming\ModrinthApp\profiles\Cobblemon Modpack\config\wands.json:14:   "survival_unenchanted_drops": true,
