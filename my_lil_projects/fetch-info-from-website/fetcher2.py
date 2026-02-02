@@ -8,7 +8,7 @@ from selenium.common.exceptions import TimeoutException
 import pdfplumber
 import io
 
-driver = wd.Chrome()
+driver = wd.Firefox()
 
 
 print("Triathlon get results python script.")
@@ -19,8 +19,8 @@ soup = bs4(response.content, "html.parser")
 
 pages = soup.find_all("div", class_="results-list__item")
 
-for page in pages:
-    link = page.find('a')
+for wpage in pages:
+    link = wpage.find('a')
     href = link.get("href")
 
     try:
@@ -37,13 +37,17 @@ for page in pages:
 
     pdf_response = requests.get(pdf_href)
 
-    with pdfplumber.open(io.BytesIO(response.content)) as pdf:
-        text = page.extract_text()
-        rows = text.split("\n")
-
-        for row in rows:
-            if "Illia Kucher" in row:
-                print(row)
+    with pdfplumber.open(io.BytesIO(pdf_response.content)) as pdf:
+        for page in pdf.pages:
+            text = page.extract_text()
+            rows = text.split("\n")
+            gotit=False
+            for row in rows:
+                if "Nome" in row and not gotit:
+                    print(row)
+                    gotit = True
+                if "Illia Kucher" in row:
+                    print(row)
         
 
 driver.quit()

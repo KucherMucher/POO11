@@ -5,6 +5,8 @@ from selenium.webdriver.common.by import By as by
 from selenium.webdriver.support.ui import WebDriverWait as wdw
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException
+import pdfplumber
+import io
 
 driver = wd.Firefox()
 
@@ -13,7 +15,7 @@ print("Triathlon get results python script.")
 pdf_href = input("Link: ")
 
 
-driver.get(pdf_href)
+"""driver.get(pdf_href)
 wdw(driver, 3).until(ec.presence_of_all_elements_located((by.TAG_NAME, "span")))
 
 pdf_soup = bs4(driver.page_source, "html.parser")
@@ -28,7 +30,18 @@ for pdf_page in pdf_pages:
         r+=1
         if "Masculino" in row:
             print(f"\n{row}")
-    print(r)
+    print(r)"""
+
+pdf_response = requests.get(pdf_href)
+
+with pdfplumber.open(io.BytesIO(pdf_response.content)) as pdf:
+    for page in pdf.pages:
+        text = page.extract_text()
+        rows = text.split("\n")
+
+        for row in rows:
+            if "Illia Kucher" in row:
+                print(row)
 
 driver.quit()
 
