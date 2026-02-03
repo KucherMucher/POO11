@@ -7,9 +7,14 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException
 import pdfplumber
 import io
+import pdfkit
 
 driver = wd.Firefox()
-
+config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
+options={
+    "print-media-type": None,
+    "enable-local-file-access": None,
+}
 
 print("Triathlon get results python script.")
 root_page = input("Link: ")
@@ -23,24 +28,13 @@ for wpage in pages:
     link = wpage.find('a')
     href = link.get("href")
 
-    try:
-        driver.get(href)
+    pdf_transform = pdfkit.from_url(href, False, options=options, configuration=config)
 
-        click_btn = wdw(driver, 2).until(ec.element_to_be_clickable((by.CLASS_NAME, "ListControlPDF")))
-        click_btn.click()
-
-        pdf_link = wdw(driver, 2).until(ec.presence_of_element_located((by.CSS_SELECTOR, 'a[href*=".pdf"]')))
-        pdf_href = pdf_link.get_attribute("href")
-
-    except TimeoutException:
-        pdf_href = href
-
-    pdf_response = requests.get(pdf_href)
-    
-    with pdfplumber.open(io.BytesIO(pdf_response.content)) as pdf:
+    gotit=False
+    with pdfplumber.open(io.BytesIO(pdf_transform)) as pdf:
         for page in pdf.pages:
-            text = page.extract_text()
-            rows = text.split("\n")
+            text = page.extract_text() or ""
+            rows = text.splitlines()
             gotit=False
             for row in rows:
                 if "Nome" in row and not gotit:
@@ -51,4 +45,5 @@ for wpage in pages:
 
         
 
-driver.quit()
+#driver.quit()
+
