@@ -11,6 +11,9 @@ Plano:
         . há divisões com ftp-folder só que depois vem um pdf em vez de uma tabela
         . todas tabelas são bootstrap (bom)
         . tabelas guardam row em tr, por isso dá para extrair row completa com bs4
+        . quando há ftp-folder com pdf, pdf link esta contido dentro de iftame tag e da para conseguir link
+        . no table, é preciso usar selenium para clicar. Maioria dot rabalho se calhar sera feito pelo bs4
+        . para aceder a ftp-folder e tabela usar bs4
 
     criar código para diferentes situações:
         . ftp-folder:
@@ -36,6 +39,8 @@ Plano:
     
     criar menu
     criar tambem código para casos especificos?
+    
+    
 
     
     
