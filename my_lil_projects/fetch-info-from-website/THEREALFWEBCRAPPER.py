@@ -47,10 +47,44 @@ for tab in tabs:
     
     # . external site + bootstrap table (needs navigation in divisions)
     CASE = 0
+    SPECIAL_CASE = 0
+
+    if ftp_folder > 0:
+        # open every ftp_folder using selenium
+        # i dont know if I really need to open ftp folders?
+        # i do catually, because i need to click the table with selenium...
+        driver.get(tab_href)
+
+        for i in range(0, ftp_folder.count()):
+            click_btn = wdw(driver, 2).until(ec.element_to_be_clickable((by.CLASS_NAME, "ftp-folder")))
+            click_btn.click()
+    
+    # now that everyting is opened, we will look if there are tables or iframe pdfs
+
+    if tab_soup.find('div', class_='ListControl'):
+        CASE = 1
+    if tab_soup.find('iframe', class_='pdf-viewer'):
+        CASE = 2
+
     ftp_folder = tab_soup.find_all('div', class_='ftp-folders')
-    table = 0
-    if :
-        CASE = 1.0
+    
+    match CASE:
+        case 1:
+            if ftp_folder > 0:
+                # open every ftp_folder using selenium
+                # i dont know if I really need to open ftp folders?
+                # i do catually, because i need to click the table with selenium...
+                driver.get(tab_href)
+
+                for i in range(0, ftp_folder.count()):
+                    click_btn = wdw(driver, 2).until(ec.element_to_be_clickable((by.CLASS_NAME, "ftp-folder")))
+                    click_btn.click()
+        case 2:
+            i=0
+            for iframe in tab_soup.find_all('iframe', class_='pdf-viewer'):
+                i+=1
+                print(i)
+    
         
 
 driver.quit()

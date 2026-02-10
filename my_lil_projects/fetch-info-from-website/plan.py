@@ -9,7 +9,9 @@ Plano:
         . vai logo para site exterior, mas com tabela igual a original
         . há tabela com diferentes divisões, com divisão inicial não aquela que eu preciso
         . há divisões com ftp-folder só que depois vem um pdf em vez de uma tabela
+        
         . todas tabelas são bootstrap (bom)
+
         . tabelas guardam row em tr, por isso dá para extrair row completa com bs4
         . quando há ftp-folder com pdf, pdf link esta contido dentro de iftame tag e da para conseguir link
         . no table, é preciso usar selenium para clicar. Maioria dot rabalho se calhar sera feito pelo bs4
