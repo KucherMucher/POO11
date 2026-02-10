@@ -12,6 +12,10 @@ import pdfkit
 
 import io
 
+def bootable_manager(table):
+
+def pdf_manager(pdf_href):
+
 driver = wd.Firefox()
 """
 config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
@@ -44,46 +48,50 @@ for tab in tabs:
     # . ftp-folder + pdf
 
     # . bootstrap table (needs navigation in divisions "")
-    
+
     # . external site + bootstrap table (needs navigation in divisions)
     CASE = 0
     SPECIAL_CASE = 0
 
-    if ftp_folder > 0:
-        # open every ftp_folder using selenium
-        # i dont know if I really need to open ftp folders?
-        # i do catually, because i need to click the table with selenium...
-        driver.get(tab_href)
+    # now that everyting is opened, we will look for diferent elements
 
-        for i in range(0, ftp_folder.count()):
-            click_btn = wdw(driver, 2).until(ec.element_to_be_clickable((by.CLASS_NAME, "ftp-folder")))
-            click_btn.click()
-    
-    # now that everyting is opened, we will look if there are tables or iframe pdfs
-
-    if tab_soup.find('div', class_='ListControl'):
+    if tab_soup.find('div', class_='RRPublish'):
+        print("Found bootstrap table")
         CASE = 1
     if tab_soup.find('iframe', class_='pdf-viewer'):
+        print("Found iframe pdf")
         CASE = 2
+    if tab_soup.find('div', class_='ftp-folder'):
+        print('found ftp-folders')
 
-    ftp_folder = tab_soup.find_all('div', class_='ftp-folders')
-    
+    ftp_folders = tab_soup.find_all('div', class_='ftp-folder')
+
     match CASE:
         case 1:
-            if ftp_folder > 0:
+            if ftp_folders:
                 # open every ftp_folder using selenium
                 # i dont know if I really need to open ftp folders?
                 # i do catually, because i need to click the table with selenium...
                 driver.get(tab_href)
 
-                for i in range(0, ftp_folder.count()):
+                for ftp_folder in ftp_folders:
                     click_btn = wdw(driver, 2).until(ec.element_to_be_clickable((by.CLASS_NAME, "ftp-folder")))
                     click_btn.click()
+                    print(i+1)
+                    table = ftp_folder.find('div', class_='RRPublish')
+                    # for this function we need: table soup
+                    bootable_manager(table)
+            else:
+                table = tab_soup.find('div', class_='RRPublish')
+                bootable_manager(table)
         case 2:
             i=0
-            for iframe in tab_soup.find_all('iframe', class_='pdf-viewer'):
+            iframes = tab_soup.find_all('iframe', class_='pdf-viewer')
+            for iframe in iframes:
                 i+=1
                 print(i)
+                # for this functio we need iframe link. Extract the src
+                pdf_manager(iframe.get('src'))
     
         
 
