@@ -4,6 +4,7 @@ import requests
 from selenium import webdriver as wd
 from selenium.webdriver.common.by import By as by
 from selenium.webdriver.support.ui import WebDriverWait as wdw
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException
 
@@ -11,6 +12,8 @@ import pdfplumber
 import pdfkit
 
 import io
+
+#imo selenium is better than bs4
 
 def bootable_manager(table, href='0'):
     # the table has diferent sections, that you choose by a selector bar
@@ -20,13 +23,35 @@ def bootable_manager(table, href='0'):
     if href=='0':
         local = table
     else:
-        local = href
+        local = driver.get(href)
+
+    select_element = wdw(local, 2).until(ec.element_to_be_clickable((by.TAG_NAME, "select")))
+    
+    
+    select = Select(select_element)
+    for option in select.options:
+        if 'Absolutos' in option.text:
+            select.select_by_visible_text(option.text)
+
+            # now that we found one (or multiple) of the selectos that we need, we will analise its <MainDiv>
+            # another way of geting the option, getting the value of the option "Absolutos" and modify the link to paste there the value of this option
+
+            MainDiv = wdw(local, 10).until(ec.presence_of_element_located((by.CLASS_NAME, 'MainDiv')))
+            # the problem was it not finding maindiv as a cause of not haveing enough time
+
+            trs = MainDiv.find_elements(by.TAG_NAME, 'tr')
+
+            for tr in trs:
+                if 'Illia Kucher' in tr.text:
+                    print("Illia Kucher found")
 
     
 
 
 def pdf_manager(pdf_href):
     return 0
+
+
 driver = wd.Firefox()
 """
 config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
@@ -101,7 +126,7 @@ for tab in tabs:
             driver.get(tab_href)
             ftp_folders_selenium = driver.find_elements(by.CLASS_NAME, "ftp-folder")
 
-            if ftp_folder:
+            if ftp_folders_selenium:
                 for ff in ftp_folders_selenium:
                     ff.click()
                     table = ff.find_element(by.CLASS_NAME, 'RRPublish')
