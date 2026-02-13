@@ -15,7 +15,10 @@ import io
 
 #imo selenium is better than bs4
 
+result_list = []
+
 def bootable_manager(table, href='0'):
+    global result_list
     # the table has diferent sections, that you choose by a selector bar
     # using selenium we will choose the select that we need (the most abundant, in this case, escalões or absolutos)
 
@@ -26,24 +29,43 @@ def bootable_manager(table, href='0'):
         local = driver.get(href)
 
     select_element = wdw(local, 2).until(ec.element_to_be_clickable((by.TAG_NAME, "select")))
-    
-    
     select = Select(select_element)
-    for option in select.options:
-        if 'Absolutos' in option.text:
-            select.select_by_visible_text(option.text)
+    trs = None
 
-            # now that we found one (or multiple) of the selectos that we need, we will analise its <MainDiv>
-            # another way of geting the option, getting the value of the option "Absolutos" and modify the link to paste there the value of this option
+    no = False
+    for option in select.options: 
+        if 'Absolutos' in option.text: # to not repeat the same thing, make a function to do the same thing
+            no = False
+            trs = getTRS(local, select, option)
+            break
+        else:
+            no = True
+    
+    if no:
+        for option in select.options:
+            if 'Escalões' in option.text:
+                no = False
+                trs = getTRS(local, select, option)
+    """else:
+        for option in select.options:
+            if 'Clubes' in option.text:
+                trs = getTRS(local, select, option)
+            else:
+                print("Failed to get info.\nError: No right selector found.")"""
 
-            MainDiv = wdw(local, 10).until(ec.presence_of_element_located((by.CLASS_NAME, 'MainDiv')))
-            # the problem was it not finding maindiv as a cause of not haveing enough time
+    for tr in trs:
+        if 'Illia Kucher' in tr.text:
+            print(tr.text)
+            # at this point, or we save it in a global variable, or we return it to the main variable.
+            return tr.text
+                
+def getTRS(local, select, option):
+    select.select_by_visible_text(option.text)
+    # now that we found one (or multiple) of the selectos that we need, we will analise its <MainDiv>
 
-            trs = MainDiv.find_elements(by.TAG_NAME, 'tr')
-
-            for tr in trs:
-                if 'Illia Kucher' in tr.text:
-                    print("Illia Kucher found")
+    MainDiv = wdw(local, 10).until(ec.presence_of_element_located((by.CLASS_NAME, 'MainDiv'))) # the problem was it not finding maindiv as a coause of not haveing enough time
+    trs = MainDiv.find_elements(by.TAG_NAME, 'tr')
+    return trs
 
     
 
@@ -130,7 +152,7 @@ for tab in tabs:
                 for ff in ftp_folders_selenium:
                     ff.click()
                     table = ff.find_element(by.CLASS_NAME, 'RRPublish')
-                    bootable_manager(table)
+                    result_list.append(f"{}\n{bootable_manager(table)}")
             else:
                 table = driver.find_element(by.CLASS_NAME, 'RRPublish')
                 bootable_manager(table)

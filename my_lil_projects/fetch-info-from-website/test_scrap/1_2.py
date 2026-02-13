@@ -43,7 +43,7 @@ def bootable_manager(table, href='0'):
 
 root_ = "https://www.federacao-triatlo.pt/ftp2015/competicoes/resultados/resultados-2025/iii-triatlo-caldas-rainha-resultados/#0_C1613A"
 
-driver = wd.Edge()
+driver = wd.Chrome()
 driver.get(root_)
 
 table = driver.find_element(by.CLASS_NAME, 'RRPublish')
