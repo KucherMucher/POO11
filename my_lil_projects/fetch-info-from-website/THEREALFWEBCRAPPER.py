@@ -15,6 +15,12 @@ import io
 
 #imo selenium is better than bs4
 
+config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
+options={
+    "print-media-type": None,
+    "enable-local-file-access": None,
+}
+
 result_list = []
 
 def bootable_manager(table, href='0'):
@@ -53,11 +59,21 @@ def bootable_manager(table, href='0'):
             else:
                 print("Failed to get info.\nError: No right selector found.")"""
 
+    
+
     for tr in trs:
         if 'Illia Kucher' in tr.text:
             print(tr.text)
             # at this point, or we save it in a global variable, or we return it to the main variable.
-            return tr.text
+            tr_selected = tr.text
+        elif tr.tag_name == 'thead':
+            print(tr.text)
+            tr_reference = tr.text
+        elif 'Corrida' in tr.text:
+            print(tr.text)
+            distance = tr.text
+
+    return tr_reference, tr_selected, distance
                 
 def getTRS(local, select, option):
     select.select_by_visible_text(option.text)
@@ -65,13 +81,26 @@ def getTRS(local, select, option):
 
     MainDiv = wdw(local, 10).until(ec.presence_of_element_located((by.CLASS_NAME, 'MainDiv'))) # the problem was it not finding maindiv as a coause of not haveing enough time
     trs = MainDiv.find_elements(by.TAG_NAME, 'tr')
+    trs.append(MainDiv.find_element(by.TAG_NAME, 'thead'))
     return trs
 
     
 
 
 def pdf_manager(pdf_href):
-    return 0
+    pdf_transform = pdfkit.from_url(pdf_href, False, options=options, configuration=config)
+    with pdfplumber.open(io.BytesIO(pdf_transform)) as pdf:
+        for page in pdf.pages:
+            text = page.extract_text() or ""
+            rows = text.splitlines()
+            for row in rows:
+                if "Illia Kucher" in row:
+                    print(row)
+                    row_selected = row
+                elif "Nome" in row:
+                    print(row)
+                    row_reference = row
+    return row_reference, row_selected
 
 
 driver = wd.Firefox()
@@ -152,10 +181,12 @@ for tab in tabs:
                 for ff in ftp_folders_selenium:
                     ff.click()
                     table = ff.find_element(by.CLASS_NAME, 'RRPublish')
-                    result_list.append(f"{}\n{bootable_manager(table)}")
+                    justsomelist = bootable_manager(table)
+                    result_list.append(f"{justsomelist[1]}\n{justsomelist[2]}") # now show the distance and navigation bar in the table
             else:
                 table = driver.find_element(by.CLASS_NAME, 'RRPublish')
-                bootable_manager(table)
+                justsomelist = bootable_manager(table)
+                result_list.append(f"{justsomelist[1]}\n{justsomelist[2]}")
         case 2:
             i=0
             iframes = tab_soup.find_all('iframe', class_='pdf-viewer')

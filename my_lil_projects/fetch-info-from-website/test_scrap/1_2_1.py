@@ -52,6 +52,8 @@ def bootable_manager(table, href='0'):
     for tr in trs:
         if 'Illia Kucher' in tr.text:
             print(tr.text)
+        elif tr.tag_name == 'thead':
+            print(tr.text)
                 
 def getTRS(local, select, option):
     select.select_by_visible_text(option.text)
@@ -59,6 +61,7 @@ def getTRS(local, select, option):
 
     MainDiv = wdw(local, 10).until(ec.presence_of_element_located((by.CLASS_NAME, 'MainDiv'))) # the problem was it not finding maindiv as a coause of not haveing enough time
     trs = MainDiv.find_elements(by.TAG_NAME, 'tr')
+    trs.append(MainDiv.find_element(by.TAG_NAME, 'thead'))
     return trs
 
 
