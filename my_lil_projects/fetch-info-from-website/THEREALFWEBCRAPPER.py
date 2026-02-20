@@ -59,7 +59,9 @@ def bootable_manager(table, href='0'):
             else:
                 print("Failed to get info.\nError: No right selector found.")"""
 
-    
+    tr_selected = None
+    tr_reference = None
+    distance = None
 
     for tr in trs:
         if 'Illia Kucher' in tr.text:
@@ -72,8 +74,11 @@ def bootable_manager(table, href='0'):
         elif 'Corrida' in tr.text:
             print(tr.text)
             distance = tr.text
-
-    return tr_reference, tr_selected, distance
+            
+    if tr_selected == None:
+        return None
+    else:
+        return tr_reference, tr_selected, distance
                 
 def getTRS(local, select, option):
     select.select_by_visible_text(option.text)

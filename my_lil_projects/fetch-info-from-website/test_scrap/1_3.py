@@ -10,21 +10,20 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.remote.webelement import WebElement
 
 import pdfplumber
-import pdfkit
 
 import io
 
-
-config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
-options={
-    "print-media-type": None,
-    "enable-local-file-access": None,
-}
-
-
 def pdf_manager(pdf_href):
-    pdf_transform = pdfkit.from_url(pdf_href, False, options=options, configuration=config)
-    with pdfplumber.open(io.BytesIO(pdf_transform)) as pdf:
+    row_selected = None
+    row_reference = None
+
+    try:
+        response = requests.get(pdf_href)
+        response.raise_for_status()  # Raises an error if the download failed
+    except requests.exceptions.InvalidSchema:
+        return None
+
+    with pdfplumber.open(io.BytesIO(response.content)) as pdf:
         for page in pdf.pages:
             text = page.extract_text() or ""
             rows = text.splitlines()
@@ -35,7 +34,10 @@ def pdf_manager(pdf_href):
                 elif "Nome" in row:
                     print(row)
                     row_reference = row
-    return row_reference, row_selected
+    if row_selected == None:
+        return None
+    else:
+        return row_reference, row_selected
 
 
 root_ = "https://www.federacao-triatlo.pt/ftp2015/competicoes/resultados/resultados-2025/ix-duatlo-fatima-resultados/"
@@ -43,10 +45,16 @@ root_ = "https://www.federacao-triatlo.pt/ftp2015/competicoes/resultados/resulta
 driver = wd.Chrome()
 driver.get(root_)
 
-iframes = driver.find_elements(by.TAG_NAME, "iframe")
+justsomelist = []
 
+root_response = requests.get(root_)
+root_soup = bs4(root_response.content, "html.parser")
+i=0
+iframes = root_soup.find_all('iframe', class_='pdf-viewer')
 for iframe in iframes:
+    i+=1
+    print(i)
     # for this function we need iframe link. Extract the src
-    pdf_manager(iframe.get_attribute('src'))
+    justsomelist.append(pdf_manager(iframe.get('src')))
 
 # objective - test pdf scrapper
