@@ -39,7 +39,7 @@ def bootable_manager(table, href='0'):
     
     if no:
         for option in select.options:
-            if 'Escalões' in option.text:
+            if 'Estafetas' in option.text:
                 no = False
                 trs = getTRS(local, select, option)
     """else:
@@ -65,7 +65,7 @@ def getTRS(local, select, option):
     return trs
 
 
-root_ = "https://www.federacao-triatlo.pt/ftp2015/competicoes/resultados/resultados-2025/iv-triatlo-sao-martinho-porto-resultados/"
+root_ = "https://www.federacao-triatlo.pt/ftp2015/competicoes/resultados/resultados-2025/iii-triatlo-casconha-resultados/#0_1634EF"
 
 driver = wd.Chrome()
 driver.get(root_)
@@ -86,3 +86,6 @@ else:
 # made more select options.
 # moved one part of the function into anothger function
 # 
+
+
+# more testing - some sites will not load on the first page, thats why we need more selects to load pages

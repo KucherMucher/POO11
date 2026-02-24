@@ -15,16 +15,17 @@ import io
 
 #imo selenium is better than bs4
 
-config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
+"""config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
 options={
     "print-media-type": None,
     "enable-local-file-access": None,
-}
+}"""
 
 result_list = []
 
+select_option_filter = ["Absolutos", "Escalões", "Clubes", "Individual", "Estafetas"]
+
 def bootable_manager(table, href='0'):
-    global result_list
     # the table has diferent sections, that you choose by a selector bar
     # using selenium we will choose the select that we need (the most abundant, in this case, escalões or absolutos)
 
@@ -38,26 +39,19 @@ def bootable_manager(table, href='0'):
     select = Select(select_element)
     trs = None
 
-    no = False
-    for option in select.options: 
-        if 'Absolutos' in option.text: # to not repeat the same thing, make a function to do the same thing
-            no = False
-            trs = getTRS(local, select, option)
-            break
-        else:
-            no = True
-    
-    if no:
-        for option in select.options:
-            if 'Escalões' in option.text:
-                no = False
-                trs = getTRS(local, select, option)
-    """else:
-        for option in select.options:
-            if 'Clubes' in option.text:
-                trs = getTRS(local, select, option)
-            else:
-                print("Failed to get info.\nError: No right selector found.")"""
+    breakyeah = False
+    try:
+        for filter in select_option_filter:
+            #print(filter) # debug
+            for option in select.options:
+                if filter in option.text:
+                    trs = getTRS(local, select, option)
+                    breakyeah = True
+                    break
+            if breakyeah:
+                break
+    except Exception:
+        print("Failed to get info.\nError: No right selector found.")
 
     tr_selected = None
     tr_reference = None
@@ -69,10 +63,10 @@ def bootable_manager(table, href='0'):
             # at this point, or we save it in a global variable, or we return it to the main variable.
             tr_selected = tr.text
         elif tr.tag_name == 'thead':
-            print(tr.text)
+            #print(tr.text)
             tr_reference = tr.text
         elif 'Corrida' in tr.text:
-            print(tr.text)
+            #print(tr.text)
             distance = tr.text
             
     if tr_selected == None:
@@ -89,12 +83,18 @@ def getTRS(local, select, option):
     trs.append(MainDiv.find_element(by.TAG_NAME, 'thead'))
     return trs
 
-    
-
 
 def pdf_manager(pdf_href):
-    pdf_transform = pdfkit.from_url(pdf_href, False, options=options, configuration=config)
-    with pdfplumber.open(io.BytesIO(pdf_transform)) as pdf:
+    row_selected = None
+    row_reference = None
+
+    try:
+        response = requests.get(pdf_href)
+        response.raise_for_status()  # Raises an error if the download failed
+    except requests.exceptions.InvalidSchema:
+        return None
+
+    with pdfplumber.open(io.BytesIO(response.content)) as pdf:
         for page in pdf.pages:
             text = page.extract_text() or ""
             rows = text.splitlines()
@@ -103,12 +103,15 @@ def pdf_manager(pdf_href):
                     print(row)
                     row_selected = row
                 elif "Nome" in row:
-                    print(row)
+                    #print(row)
                     row_reference = row
-    return row_reference, row_selected
+    if row_selected == None:
+        return None
+    else:
+        return row_reference, row_selected
 
 
-driver = wd.Firefox()
+driver = wd.Chrome()
 """
 config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
 options={
@@ -131,6 +134,8 @@ for tab in tabs:
     tab_name = tab.text
     tab_href = tab.find('a').get('href')
     
+    print(tab_name) #debug
+
     # access soup to determine the case
     tab_response = requests.get(tab_href)
     tab_soup = bs4(tab_response.content, "html.parser")
@@ -147,6 +152,7 @@ for tab in tabs:
 
     # now that everyting is opened, we will look for diferent elements
 
+    # !!!- later rework this to use selenium as bs4 is now useless -!!!
     if tab_soup.find('div', class_='RRPublish'):
         print("Found bootstrap table")
         CASE = 1
@@ -161,9 +167,7 @@ for tab in tabs:
     match CASE:
         case 1:
             """if ftp_folder:
-                # open every ftp_folder using selenium
-                # i dont know if I really need to open ftp folders?
-                # i do catually, because i need to click the table with selenium...
+                
                 driver.get(tab_href)
                 ftp_folders_sele = driver.find_elements(by.CLASS_NAME, "ftp-folder")
 
@@ -179,6 +183,9 @@ for tab in tabs:
                 # here we need table and tab_link
                 bootable_manager(table, tab_href)
             """
+            # open every ftp_folder using selenium
+                # i dont know if I really need to open ftp folders?
+                    # i do catually, because i need to click the table with selenium...
             driver.get(tab_href)
             ftp_folders_selenium = driver.find_elements(by.CLASS_NAME, "ftp-folder")
 
@@ -186,20 +193,37 @@ for tab in tabs:
                 for ff in ftp_folders_selenium:
                     ff.click()
                     table = ff.find_element(by.CLASS_NAME, 'RRPublish')
-                    justsomelist = bootable_manager(table)
-                    result_list.append(f"{justsomelist[1]}\n{justsomelist[2]}") # now show the distance and navigation bar in the table
+                    # for this function we need: table soup,or maybe do everything using selenium???
+                    try:
+                        justsomelist = bootable_manager(table) # bootstrap table manager
+                    except Exception:
+                        print("Error: ftp-folder didnt load (maybe). This will just go to the olther folder") #resolve this issue.
+                        continue
+                    if justsomelist == None:
+                        continue
+                    else:
+                        result_list.append(f"{justsomelist[0]}\n{justsomelist[1]}\n") # now show the distance and navigation bar in the table
             else:
                 table = driver.find_element(by.CLASS_NAME, 'RRPublish')
                 justsomelist = bootable_manager(table)
-                result_list.append(f"{justsomelist[1]}\n{justsomelist[2]}")
+                if justsomelist == None:
+                    continue
+                else:
+                    result_list.append(f"{justsomelist[0]}\n{justsomelist[1]}\n")
         case 2:
             i=0
+            # get iframes, btw cool thing
             iframes = tab_soup.find_all('iframe', class_='pdf-viewer')
             for iframe in iframes:
-                i+=1
-                print(i)
-                # for this function we need iframe link. Extract the src
-                pdf_manager(iframe.get('src'))
+                """i+=1
+                print(i)"""
+                pdf_href = iframe.get('data-pdf-url')
+                # for this function we need iframe link. Extract the url
+                justsomelist = pdf_manager(pdf_href)
+                if justsomelist == None:
+                    continue
+                else:
+                    result_list.append(f"{justsomelist[0]}\n{justsomelist[1]}\n")
     
         
 

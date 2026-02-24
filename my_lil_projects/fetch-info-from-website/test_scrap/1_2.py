@@ -40,8 +40,10 @@ def bootable_manager(table, href='0'):
             for tr in trs:
                 if 'Illia Kucher' in tr.text:
                     print("Illia Kucher found")
+        if "Masculino" in option.text:
+            print("I was right all along!")
 
-root_ = "https://www.federacao-triatlo.pt/ftp2015/competicoes/resultados/resultados-2025/iii-triatlo-caldas-rainha-resultados/#0_C1613A"
+root_ = "https://www.federacao-triatlo.pt/ftp2015/competicoes/resultados/resultados-2025/iii-triatlo-casconha-resultados/#0_1634EF"
 
 driver = wd.Chrome()
 driver.get(root_)

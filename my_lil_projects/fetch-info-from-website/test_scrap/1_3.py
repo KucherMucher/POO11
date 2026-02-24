@@ -54,7 +54,11 @@ iframes = root_soup.find_all('iframe', class_='pdf-viewer')
 for iframe in iframes:
     i+=1
     print(i)
+    pdf_href = iframe.get('data-pdf-url')
     # for this function we need iframe link. Extract the src
-    justsomelist.append(pdf_manager(iframe.get('src')))
+    justsomelist.append(pdf_manager(pdf_href))
 
 # objective - test pdf scrapper
+
+# doesnt work - get src
+# works - get data-pdf-url
