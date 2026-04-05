@@ -99,3 +99,21 @@ match exercicio:
 
         v.mostrar_dados()
 
+    case 5:
+        class Lampada():
+            def __init__(self, marca, divisao, estado_lig=False):
+                self.marca = marca; self.divisao=divisao; self.estado_lig=estado_lig #ligada? True/False
+
+            def ligar(self):
+                self.estado_lig = True
+            def desligar(self):
+                self.estado_lig = False
+            def mostrar_estado(self):
+                print(f"Marca - {self.marca}"
+                      f"\nDivisao - {self.divisao}"
+                      f"\nEstado: {"Ligado" if self.estado_lig else "Desligado"}")
+                
+        lam = Lampada("HP", 4, False)
+        lam.ligar(); lam.mostrar_estado()
+        lam.desligar(); lam.mostrar_estado()
+
